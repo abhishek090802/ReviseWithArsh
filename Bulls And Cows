@@ -1,0 +1,25 @@
+class Solution {
+public:
+    string getHint(string s, string g) {
+        int bull=0; int cow=0; 
+        vector<int>a(10,0); 
+        vector<int>b(10,0); 
+        for(int i=0;i<g.size();i++){
+            if(g[i]==s[i])
+                bull++; 
+            else{  
+                a[s[i]-'0']++; 
+                b[g[i]-'0']++; 
+             
+              
+                }
+            } 
+        for(int i=0;i<10;i++)
+            cow+=min(a[i],b[i]); 
+        
+        string ans; 
+        ans+=to_string(bull)+"A"+to_string(cow)+"B"; 
+        return ans; 
+                
+    }
+};
