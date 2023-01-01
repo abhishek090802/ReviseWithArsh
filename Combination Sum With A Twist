@@ -1,0 +1,35 @@
+class Solution {
+public: 
+    vector<vector<int>>ans;   
+    set<vector<int>>s1; 
+    void solve(int k,int n,vector<int>&level,vector<int>&vis){
+        
+        if(k==0 and n==0){  
+            vector<int>demo=level; 
+            sort(demo.begin(),demo.end()); 
+           // sort(level.begin(),level.end()); 
+           s1.insert(demo); 
+           
+            return ;
+            } 
+            for(int i=1;i<=9;i++){ 
+                if(n>=i and vis[i]==-1){
+                    vis[i]=1; 
+               level.push_back(i); 
+                solve(k-1,n-i,level,vis); 
+                level.pop_back();  
+                    vis[i]=-1; 
+                    }
+                } 
+      //  vis.resize(
+            }
+       
+    vector<vector<int>> combinationSum3(int k, int n) { 
+        vector<int>level;  
+        vector<int>vis(11,-1); 
+        solve(k,n,level,vis); 
+        for(auto it:s1)
+            ans.push_back(it); 
+        return ans; 
+    }
+};
